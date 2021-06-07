@@ -57,8 +57,7 @@ for(let i = 0; i <= 6 ;i++){
         /* atualizar o array de elementos da coluna */
         let i = Number(col.id[col.id.length - 1]);
         for(let j = 0; j < col.childElementCount; j++){ 
-            let nome = col.children[j].id;
-            console.log(nome);
+            var nome = col.children[j].id;
             if(nome === "Preto"){                
                 arr[i][j] = 1;
                 block = '';
@@ -68,15 +67,10 @@ for(let i = 0; i <= 6 ;i++){
                 block = '';
             }
         }
-
-
-        console.log(arr);
-        /*
-        linha();
-        coluna();
-        diagonal1();
-        diagonal2();
-        */
+        
+        if(linha(arr) || coluna(arr) || diagonal1(arr) ||  diagonal2(arr)){
+            placar.innerHTML = '<Br>' + 'ganhou' + nome;
+        }
     });
 }
 
