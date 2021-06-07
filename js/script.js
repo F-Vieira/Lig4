@@ -61,16 +61,22 @@ for(let i = 0; i <= 6 ;i++){
             console.log(nome);
             if(nome === "Preto"){                
                 arr[i][j] = 1;
+                block = '';
             }
             if(nome === "Vermelho"){                
                 arr[i][j] = 2;
+                block = '';
             }
         }
+
+
         console.log(arr);
+        /*
         linha();
         coluna();
         diagonal1();
         diagonal2();
+        */
     });
 }
 
