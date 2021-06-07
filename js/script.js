@@ -67,12 +67,63 @@ for(let i = 0; i <= 6 ;i++){
             }
         }
         console.log(arr);
-        linha();
-        coluna();
-        diagonal1();
-        diagonal2();
+        // linha(arr);
+        verificarVertical();
+        // diagonal1();
+        // diagonal2();
     });
 }
+
+function verificarVertical(){
+    let countPreto = 1;
+    let countVermelho = 1;
+    let newArr;
+
+    for(let i = 0; i < arr.length; i++){
+            newArr = arr[i];
+        for(let j = 0; j < newArr.length-1; j++){
+            if(newArr[j] > 0){
+                if(newArr[j] === newArr[j + 1] == 1){
+                    countPreto++;
+                } 
+                if (newArr[j] == newArr[j + 1] == 2){
+                    countVermelho++;
+                }
+                if(countPreto == 4){
+                    alert("vc venceu")
+                    return true;
+                } 
+                if (countVermelho == 4){
+                    return true;
+                }
+            }
+        }
+    }
+}
+
+const linha = (arr) => {
+    let cont1 = 1;
+    let cont2 = 1;
+    for(let i = 0; i < arr.length-1; i++){
+        for(let j = 0; j < arr[i].length; j++){
+            if(arr[i][j] > 0){
+                if(arr[i][j] == arr[i+1][j] == 1){
+                    cont1++;
+                } else if (arr[i][j] == arr[i+1][j] == 2){
+                    cont2++;
+                }
+                if(cont1 == 4){
+                    console.log ('player1 win');
+                    return true
+                } else if (cont2 == 4){
+                    return 'player2 win';
+                }
+            }
+        }
+    }
+}
+
+
 
 let buttonReset = document.createElement('button');
 
