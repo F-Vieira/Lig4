@@ -68,15 +68,10 @@ for(let i = 0; i <= 6 ;i++){
                 block = '';
             }
         }
-
-
-        // console.log(arr);
-        /*
-        linha();
-        coluna();
-        diagonal1();
-        diagonal2();
-        */
+        
+        if(linha(arr) || coluna(arr) || diagonal1(arr) ||  diagonal2(arr)){
+            placar.innerHTML = '<Br>' + 'ganhou' + nome;
+        }
     });
 }
 
