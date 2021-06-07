@@ -58,7 +58,7 @@ for(let i = 0; i <= 6 ;i++){
         let i = Number(col.id[col.id.length - 1]);
         for(let j = 0; j < col.childElementCount; j++){ 
             let nome = col.children[j].id;
-            console.log(nome);
+            // console.log(nome);
             if(nome === "Preto"){                
                 arr[i][j] = 1;
                 block = '';
@@ -70,7 +70,7 @@ for(let i = 0; i <= 6 ;i++){
         }
 
 
-        console.log(arr);
+        // console.log(arr);
         /*
         linha();
         coluna();
@@ -95,3 +95,59 @@ placar.id = 'placar';
 placar.innerText = 'Placar:';
 
 container2.appendChild(placar);
+
+// let arrTest = [
+//   [0, 1, 0, 1, 0, 0],
+//   [0, 0, 1, 0, 0, 2],
+//   [0, 1, 0, 1, 0, 0],
+//   [1, 0, 0, 1, 1, 1],
+//   [0, 0, 1, 0, 1, 0],
+//   [0, 1, 0, 1, 0, 0],
+//   [2, 0, 0, 0, 0, 0]
+// ]
+  
+function checkWinDiagonal1(arr){
+  for (let i = 0; i < arr.length -3; i++) {
+    for (let j = 0; j < arr[i].length - 3; j++) {
+      let count = 1;
+
+      if (arr[i][j] > 0) {
+
+        for (let t = 1; t < 4; t++) {
+
+          if (arr[i][j] === arr[i + t][j + t]) {
+            count++;
+          }
+        }
+        if (count === 4) {
+          console.log(`Diagonal Direita ${count}`);
+        }
+      }
+      
+    }
+  }
+}
+// checkWinDiagonal1(arrTest);
+
+function checkWinDiagonal2(arr) {
+  for (let i = 3; i < arr.length; i++) {
+    for (let j = 0; j < arr[i].length - 3; j++) {
+      let count = 1;
+
+      if (arr[i][j] > 0) {
+
+        for (let t = 1; t < 4; t++) {
+
+          if (arr[i][j] === arr[i - t][j + t]) {
+            count++;
+          } 
+        }
+
+        if (count == 4) {
+          console.log(`Diagonal Esquerda ${count}`);
+        }
+      }
+    }
+  }
+}
+// checkWinDiagonal2(arrTest);
