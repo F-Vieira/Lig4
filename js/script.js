@@ -58,7 +58,7 @@ for(let i = 0; i <= 6 ;i++){
         let i = Number(col.id[col.id.length - 1]);
         for(let j = 0; j < col.childElementCount; j++){ 
             let nome = col.children[j].id;
-            // console.log(nome);
+            console.log(nome);
             if(nome === "Preto"){                
                 arr[i][j] = 1;
                 block = '';
@@ -68,6 +68,15 @@ for(let i = 0; i <= 6 ;i++){
                 block = '';
             }
         }
+        
+
+
+
+
+
+
+
+
         
         if(linha(arr) || coluna(arr) || diagonal1(arr) ||  diagonal2(arr)){
             placar.innerHTML = '<Br>' + 'ganhou' + nome;
@@ -90,6 +99,13 @@ placar.id = 'placar';
 placar.innerText = 'Placar:';
 
 container2.appendChild(placar);
+
+
+
+
+
+
+
 
 // let arrTest = [
 //   [0, 1, 0, 1, 0, 0],
