@@ -31,6 +31,10 @@ let blocoP = document.createElement("div");
 blocoP.id = "Preto";
 container1.appendChild(blocoP);
 
+let timer = document.createElement("div");
+timer.id = "Timer";
+container1.appendChild(timer);
+
 let blocoV = document.createElement("div");
 blocoV.id = "Vermelho";
 container1.appendChild(blocoV);
@@ -72,19 +76,26 @@ for (let i = 0; i <= 6; i++) {
     /* atualizar o array de elementos da coluna */
     let i = Number(col.id[col.id.length - 1]);
     for (let j = 0; j < col.childElementCount; j++) {
-      let nome = col.children[j].id;
+      var nome = col.children[j].id;
       if (nome === "Preto") {
         arr[i][j] = 1;
+        placar.innerHTML = "<Br>" + "Turno do Vermelho";
         block = "";
       }
       if (nome === "Vermelho") {
         arr[i][j] = 2;
+        placar.innerHTML = "<Br>" + "Turno do Preto";
         block = "";
       }
     }
 
-    if (linha(arr) || coluna(arr) || diagonal1(arr) || diagonal2(arr)) {
-      placar.innerHTML = "<Br>" + "ganhou" + nome;
+    //if(linha(arr) || coluna(arr) || diagonal1(arr) || diagonal2(arr)) {
+    if(checkWinDiagonal1(arr) || checkWinDiagonal2(arr)) {
+      placar.innerHTML = "<Br>" + "Ganhou o " + nome;
+      stop();
+    }else{
+      stop();
+      start();
     }
   });
 }
@@ -101,7 +112,7 @@ let placar = document.createElement("div");
 
 placar.id = "placar";
 
-placar.innerText = "Placar:";
+placar.innerHTML = "<Br>" + "Turno do Preto";
 
 container2.appendChild(placar);
 
@@ -128,6 +139,7 @@ function checkWinDiagonal1(arr) {
         }
         if (count === 4) {
           console.log(`Diagonal Direita ${count}`);
+          return 'true';
         }
       }
     }
@@ -149,9 +161,34 @@ function checkWinDiagonal2(arr) {
 
         if (count == 4) {
           console.log(`Diagonal Esquerda ${count}`);
+          return 'true';
         }
       }
     }
   }
 }
 // checkWinDiagonal2(arrTest);
+
+
+/* Contador de tempo */
+var sec = 10;
+let interval = 1000; // millisegundos
+var lapse;
+timer.innerHTML = "Timer: " + sec + " sec";
+
+function start() {
+    sec = 11;
+    lapse = setInterval(() => {time()}, interval);
+    console.log(sec);
+}
+function stop() {
+    clearInterval(lapse);
+}
+function time() {
+    sec--;
+    if(sec === 0){
+        clearInterval(lapse);       
+        placar.innerHTML = "<Br>" + "Acabou o tempo";
+    }
+    timer.innerHTML = "Timer: " + sec + " sec";
+}
