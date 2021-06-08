@@ -34,6 +34,7 @@ function constructTable() {
 /* Criando o peça preta e vermelha */
 let blocoP = document.createElement("div");
 blocoP.id = "Preto";
+blocoP.classList.add('player');
 container1.appendChild(blocoP);
 
 let timer = document.createElement("div");
@@ -42,6 +43,7 @@ container1.appendChild(timer);
 
 let blocoV = document.createElement("div");
 blocoV.id = "Vermelho";
+blocoV.classList.add('player');
 container1.appendChild(blocoV);
 
 let block = "";
@@ -87,18 +89,18 @@ for (let i = 0; i <= 6; i++) {
 
       if (nome === "Preto") {
         arr[i][j] = 1;
-        placar.innerHTML = "<Br>" + "Turno do Vermelho";
+        placar.innerHTML = "Turno do Vermelho";
         block = "";
       }
       if (nome === "Vermelho") {
         arr[i][j] = 2;
-        placar.innerHTML = "<Br>" + "Turno do Preto";
+        placar.innerHTML = "Turno do Preto";
         block = "";
       }
     }
 
     if (checkWinDiagonal1(arr) || checkWinDiagonal2(arr)) {
-      placar.innerHTML = `<Br> ${nome} Ganhou.`;
+      placar.innerHTML = `${nome} Ganhou.`;
       stop();
     } else {
       stop();
@@ -237,7 +239,7 @@ function time() {
   sec--;
   if (sec === 0) {
     clearInterval(lapse);
-    placar.innerHTML = "<Br>" + "Acabou o tempo";
+    placar.innerHTML = "Acabou o tempo";
   }
   timer.innerHTML = "Timer: " + sec + " sec";
 }

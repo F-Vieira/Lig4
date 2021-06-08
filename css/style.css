@@ -1,97 +1,173 @@
-body, div{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+html, body, main, div, button, h1{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: none;
+}
+:root{
+  --font-family-default: 'Viaoda Libre', cursive;
 }
 
 body{
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    background-color: aqua;
+  font-family: var(--font-family-default);
+  width: 100vw;
+  height: 100vh;
+  padding: 0.75rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: darkgray;
+}
+h1{
+  font-size: 1.5rem;
+  text-align: center;
+  padding-top: 0.5rem;
+  letter-spacing: 5px;
+  font-size: 1.7rem;
 }
 
-#container1{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    width: 100vw;
+#main{
+  height: 100%;
+  flex:1 0 auto;
+  /* border: 1px solid black; */
+  border-radius: 1rem;
+  background-color: darkgray;
+  box-shadow: 0px 0px 15px 0px rgb(0 0 0 / 35%);
+}
+  #container1{
+    max-width: 350px;
     height: 20vh;
-    border: 2px solid black;
-}
+    margin: 0 auto;
 
-#Preto {
-    border: 0;
-    background-color: black;
-    border-radius: 100%;
-    width: 4.5vh;
-    height: 4.5vh;
-}
-
-#Vermelho {
-    border: 0;
-    background-color: red;
-    border-radius: 100%;
-    width: 4.5vh;
-    height: 4.5vh;
-}
-
-#box{
-    width: 100vw;
-    height: 60vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.line{
-    display: flex;
-    flex-direction: column-reverse;
-    align-items: center;
-    width: 5vh;
-    height: 27vh;
-    border: 2px solid black;
-}
-
-.bloco{
-    width: 5vh;
-    height: 5vh;
-    border: 2px solid black;
-}
-
-#container2{
-    width: 100vw;
-    height: 20vh;
-    border: 2px solid black;
     display: flex;
     justify-content: space-around;
     align-items: center;
-}
+  }
+    .player{
+      border: 0;
+      background-color: black;
+      border-radius: 50%;
+      width: 4.5vh;
+      height: 4.5vh;
 
-#buttonReset{
-    width: 20vw;
-    height: 5vh;
-    cursor: pointer;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 25px;
-    text-transform: uppercase;
-    background-color: #5a6bbd70;
-}
+      cursor: pointer;
+    }
+    #Vermelho {
+      background-color: red;
+    }
 
-#buttonReset:hover{
-    background-color: rgb(58, 57, 57);
-    color: rgb(163, 18, 18);
-}
+    #Timer{
+      letter-spacing: 3px;
+      font-weight: bold;
+    }
 
-#placar{
-    width: 70vw;
-    height: 15vh;
-    border: 2px solid black;
-    background-color: #5a6bbd70;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 25px;
+  #box{
+    width: 100%;
+    height: 45vh;
     display: flex;
     justify-content: center;
+    align-items: center;
+    
+  }
+
+    .line{
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+
+      width: 5vh;
+      height: 27vh;
+      padding: 0 14px;
+
+      border: 2px solid black;
+      border-top: none;
+      border-left: none;
+
+      cursor: pointer;
+    }
+    .line:nth-child(1){
+      border-left: 2px solid black;
+    }
+
+  #container2{
+    width: 100%;
+    height: 20vh;
+    padding: 0.7rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+    #placar{
+      order: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 100%;
+      height: 15vh;
+
+      border-radius: 10px;
+      background-color: rgb(51, 51, 51);
+      color: #fff;
+
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 1rem;
+    }
+
+    #buttonReset{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      max-width: 100px;
+      width: 50%;
+      border-radius: 10px;
+      padding: 0.5rem 0;
+      margin-right: 0.5rem;
+
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 1rem;
+      text-transform: uppercase;
+      background-color: #fff;
+      cursor: pointer;
+    }
+
+    #buttonReset:hover{
+      background-color: rgb(58, 57, 57);
+      color: #fff;
+    }
+
+@media screen and (min-width: 768px){
+  #main{
+    max-width: 600px;
+    max-height: 800px;
+  }
+  #box{
+    height: 245px;
+  }
+  .player{
+    width: 40px;
+    height: 40px;
+  }
+  .line{
+    width: 45px;
+    height: 85%;
+  }
+  #placar{
+    width: 55%;
+  }
+  #buttonReset{
+    margin-right: 0;
+    padding: 1rem;
+    width: 25%;
+    max-width: none;
+  }
+}
+
+@media screen and (min-width: 1024px){
+  #container2{
+    margin-top: 4rem;
+  }
 }
