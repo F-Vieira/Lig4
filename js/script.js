@@ -79,20 +79,24 @@ for (let i = 0; i <= 6; i++) {
       var nome = col.children[j].id;
       if (nome === "Preto") {
         arr[i][j] = 1;
+        placar.innerHTML = "<Br>" + "Turno do Vermelho";
         block = "";
       }
       if (nome === "Vermelho") {
         arr[i][j] = 2;
+        placar.innerHTML = "<Br>" + "Turno do Preto";
         block = "";
       }
     }
 
     //if(linha(arr) || coluna(arr) || diagonal1(arr) || diagonal2(arr)) {
     if(checkWinDiagonal1(arr) || checkWinDiagonal2(arr)) {
-      placar.innerHTML = "<Br>" + "ganhou" + nome;
+      placar.innerHTML = "<Br>" + "Ganhou o " + nome;
+      stop();
+    }else{
+      stop();
+      start();
     }
-    stop()
-    start()
   });
 }
 
@@ -108,7 +112,7 @@ let placar = document.createElement("div");
 
 placar.id = "placar";
 
-placar.innerText = "Placar:";
+placar.innerHTML = "<Br>" + "Turno do Preto";
 
 container2.appendChild(placar);
 
