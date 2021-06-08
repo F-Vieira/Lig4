@@ -102,36 +102,29 @@ for (let i = 0; i <= 6; i++) {
           player.id = "Preto";
         }
       }
-
+      jogadas++;
       if (
         checkWinHorizontal(arr) ||
         checkWinVertical(arr) ||
         checkWinDiagonal1(arr) ||
         checkWinDiagonal2(arr)
       ) {
-        whiteSpaceGame(arr);
         placar.innerHTML = `${nome} Ganhou.`;
-        stop();
-        condInicio = false;
-        condClonar = '';
+        setTimeout(reset, 3000);
       } else {
         stop();
         start();
       }
-      jogadas++;
-      console.log(jogadas);
+      
       /* verifica se ouve empate */
       if(jogadas === 42){
         placar.innerHTML = "Empate!";
-        stop();
-        condInicio = '';
-        condClonar = '';
+        setTimeout(reset, 3000);
       }
       condClonar = !condClonar;
     } else {
       placar.innerText = 'Mudar de coluna';
     }
-    console.log(arr)
   });
 }
 
@@ -246,7 +239,7 @@ buttonReset.innerText = "Iniciar";
 container2.appendChild(buttonReset);
 
 /* Botão de reset */
-buttonReset.addEventListener("click", function () {
+const reset = () => {
   for (let i = 0; i <= 6; i++) {
     line = document.getElementById("line" + i);
     line.innerHTML = "";
@@ -254,10 +247,11 @@ buttonReset.addEventListener("click", function () {
   buttonReset.innerText = 'Reset';
 
   placar.innerHTML = "Turno do Preto";
+  player.id = 'Preto';
   condInicio = true;
   condClonar = true;
   jogadas = 0;
   whiteSpaceGame(arr);
   stop();
-  start();
-});
+}
+buttonReset.addEventListener("click", reset);
