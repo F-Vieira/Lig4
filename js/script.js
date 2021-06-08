@@ -113,6 +113,7 @@ function checkWinDiagonal1(arr) {
         }
         if (count === 4) {
           console.log(`Diagonal Direita ${count}`);
+          return true;
         }
       }
     }
@@ -133,6 +134,7 @@ function checkWinDiagonal2(arr) {
 
         if (count == 4) {
           console.log(`Diagonal Esquerda ${count}`);
+          return true;
         }
       }
     }
