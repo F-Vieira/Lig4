@@ -18,9 +18,6 @@ placar.innerHTML = "<br>Clicar em iniciar";
 container2.appendChild(placar);
 
 let line = "";
-let bloco = "";
-
-constructTable();
 
 function constructTable() {
   for (let i = 0; i <= 6; i++) {
@@ -30,27 +27,19 @@ function constructTable() {
     box.appendChild(line);
   }
 }
+constructTable();
 
-/* Criando o peça preta e vermelha */
-let blocoP = document.createElement("div");
-blocoP.id = "Preto";
-blocoP.classList.add("player");
-container1.appendChild(blocoP);
+/* Criando peça preta e o timer */
+let player = document.createElement("div");
+player.id = "Preto";
+player.classList.add("player");
+container1.appendChild(player);
 
 let timer = document.createElement("div");
 timer.id = "Timer";
 container1.appendChild(timer);
 
-let blocoV = document.createElement("div");
-blocoV.id = "Vermelho";
-blocoV.classList.add("player");
-container1.appendChild(blocoV);
-
-let block = "";
-let num = 0;
 let arr = [[], [], [], [], [], []];
-let condInicio = false;
-let condClonar = true;
 
 /* matriz de elementos */
 for (let i = 0; i < 6; i++) {
@@ -59,29 +48,31 @@ for (let i = 0; i < 6; i++) {
   }
 }
 
-/* selecionando o bloco */
-blocoP.addEventListener("click", function () {
-  if (condInicio && condClonar) {
-    block = blocoP.cloneNode();
-    num = 0;
-    condClonar = !condClonar;
-  }
-});
-
-blocoV.addEventListener("click", function () {
-  if (condInicio && !condClonar) {
-    block = blocoV.cloneNode();
-    num = 1;
-    condClonar = !condClonar;
-  }
-});
-
 /* colocando o bloco na columna */
-console.log(condClonar);
+let nome;
+let block = "";
+
+let condInicio = false;
+let condClonar = true;
+
+let jogadas = 0;
+
 for (let i = 0; i <= 6; i++) {
   let col = document.getElementById("line" + i);
 
   col.addEventListener("click", function () {
+    if (condInicio && condClonar) {
+      block = document.createElement("div");
+      block.id = "Preto";
+      block.classList.add("player");
+    }
+
+    if (condInicio && !condClonar) {
+      block = document.createElement("div");
+      block.id = "Vermelho";
+      block.classList.add("player");
+    }
+
     /* verificando não ter mais de 6 peças na coluna */
     if (col.childElementCount < 6) {
       col.appendChild(block);
@@ -91,7 +82,6 @@ for (let i = 0; i <= 6; i++) {
 
     /* atualizar o array de elementos da coluna */
     let i = Number(col.id[col.id.length - 1]);
-    let nome;
 
     for (let j = 0; j < col.childElementCount; j++) {
       nome = col.children[j].id;
@@ -100,11 +90,13 @@ for (let i = 0; i <= 6; i++) {
         arr[j][i] = 1;
         placar.innerHTML = "<Br>Turno do Vermelho";
         block = "";
+        player.id = "Preto";
       }
       if (nome === "Vermelho") {
         arr[j][i] = 2;
         placar.innerHTML = "<Br>Turno do Preto";
         block = "";
+        player.id = "Vermelho";
       }
     }
 
@@ -117,10 +109,21 @@ for (let i = 0; i <= 6; i++) {
       placar.innerHTML = `<Br> ${nome} Ganhou.`;
       stop();
       condInicio = false;
+      condClonar = '';
     } else {
       stop();
       start();
     }
+    jogadas++;
+    
+    /* verifica se ouve empate */
+    if(jogadas === 42){
+      placar.innerHTML = "<Br> Empate!";
+      stop();
+      condInicio = '';
+      condClonar = '';
+    }
+    condClonar = !condClonar;
   });
 }
 
@@ -186,7 +189,6 @@ const checkWinVertical = (arr) => {
   for (let i = 0; i < arr.length - 3; i++) {
     newArr = arr[i];
     for (let j = 0; j < newArr.length; j++) {
-      console.log([j]);
       if (newArr[j] !== 0) {
         if (newArr[j] > 0) {
           if (
@@ -234,7 +236,7 @@ container2.appendChild(buttonReset);
 
 /* Botão de reset */
 buttonReset.addEventListener("click", function () {
-  for (let i = 0; i < 6; i++) {
+  for (let i = 0; i <= 6; i++) {
     line = document.getElementById("line" + i);
     line.innerHTML = "";
   }
