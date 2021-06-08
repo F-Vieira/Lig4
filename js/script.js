@@ -1,4 +1,4 @@
-let main = document.getElementById('main');
+let main = document.getElementById("main");
 
 let container1 = document.createElement("div");
 container1.id = "container1";
@@ -31,24 +31,23 @@ function constructTable() {
   }
 }
 
-/* Criando o peça preta e vermelha */
+/* Criando o peça preta e o timer */
 let blocoP = document.createElement("div");
 blocoP.id = "Preto";
+blocoP.classList.add("player");
 container1.appendChild(blocoP);
 
 let timer = document.createElement("div");
 timer.id = "Timer";
 container1.appendChild(timer);
 
-let blocoV = document.createElement("div");
-blocoV.id = "Vermelho";
-container1.appendChild(blocoV);
-
 let block = "";
-let num = 0;
 let arr = [[], [], [], [], [], []];
 let condInicio = false;
 let condClonar = true;
+let jogadas = 0;
+
+let nome;
 
 /* matriz de elementos */
 for (let i = 0; i < 6; i++) {
@@ -57,65 +56,79 @@ for (let i = 0; i < 6; i++) {
   }
 }
 
-/* selecionando o bloco */
-blocoP.addEventListener("click", function () {
-  if(condInicio && condClonar){
-    block = blocoP.cloneNode();
-    num = 0;
-    condClonar = !condClonar;
-  }
-});
-
-blocoV.addEventListener("click", function () {
-  if(condInicio && !condClonar){
-    block = blocoV.cloneNode();
-    num = 1;
-    condClonar = !condClonar;
-  }
-});
-
 /* colocando o bloco na columna */
-  console.log(condClonar);
-  for (let i = 0; i <= 6; i++) {
-    let col = document.getElementById("line" + i);
+for (let i = 0; i <= 6; i++) {
+  let col = document.getElementById("line" + i);
 
-    col.addEventListener("click", function () {
-      /* verificando não ter mais de 6 peças na coluna */
-      if (col.childElementCount < 6) {
-        col.appendChild(block);
-      } else {
-        console.log("max");
+  col.addEventListener("click", function () {
+    console.log(condClonar);
+    if (condInicio && condClonar) {
+      block = document.createElement("div");
+      block.id = "Preto";
+      block.classList.add("player");
+      col.appendChild(block);
+    }
+
+    if (condInicio && !condClonar) {
+      block = document.createElement("div");
+      block.id = "Vermelho";
+      block.classList.add("player");
+      col.appendChild(block);
+    }
+
+    /* verificando não ter mais de 6 peças na coluna */
+    if (col.childElementCount < 6) {
+      col.appendChild(block);
+    } else {
+      //console.log("max");
+    }
+
+    /* atualizar o array de elementos da coluna */
+    let i = Number(col.id[col.id.length - 1]);
+
+    for (let j = 0; j < col.childElementCount; j++) {
+      nome = col.children[j].id;
+
+      if (nome === "Preto") {
+        arr[j][i] = 1;
+        placar.innerHTML = "<Br>Turno do Vermelho";
+        block = "";
+        blocoP.id = "Preto";
       }
-
-      /* atualizar o array de elementos da coluna */
-      let i = Number(col.id[col.id.length - 1]);
-      let nome;
-
-      for (let j = 0; j < col.childElementCount; j++) {
-        nome = col.children[j].id;
-
-        if (nome === "Preto") {
-          arr[j][i] = 1;
-          placar.innerHTML = "<Br>Turno do Vermelho";
-          block = "";
-        }
-        if (nome === "Vermelho") {
-          arr[j][i] = 2;
-          placar.innerHTML = "<Br>Turno do Preto";
-          block = "";
-        }
+      if (nome === "Vermelho") {
+        arr[j][i] = 2;
+        placar.innerHTML = "<Br>Turno do Preto";
+        block = "";
+        blocoP.id = "Vermelho";
       }
+    }
 
-      if (checkWinHorizontal(arr) || checkWinVertical(arr) || checkWinDiagonal1(arr) || checkWinDiagonal2(arr)) {
-        placar.innerHTML = `<Br> ${nome} Ganhou.`;
-        stop();
-        condInicio = false;
-      }else{
-        stop();
-        start();
-      }
-    });
-  }
+    if (
+      checkWinHorizontal(arr) ||
+      checkWinVertical(arr) ||
+      checkWinDiagonal1(arr) ||
+      checkWinDiagonal2(arr)
+    ) {
+      placar.innerHTML = `<Br> ${nome} Ganhou.`;
+      stop();
+      condInicio = false;
+      condClonar = '';
+    } else {
+      stop();
+      start();
+    }
+    jogadas++;
+    
+    /* verifica se ouve empate */
+    if(jogadas === 42){
+      placar.innerHTML = "<Br> Empate!";
+      stop();
+      condInicio = '';
+      condClonar = '';
+    }
+    condClonar = !condClonar;
+  });
+}
 
 function checkWinDiagonal1(arr) {
   for (let i = 0; i < arr.length - 3; i++) {
@@ -162,14 +175,16 @@ const checkWinHorizontal = (arr) => {
     newArr = arr[i];
     for (let j = 0; j < newArr.length - 3; j++) {
       if (newArr[j] > 0) {
-        if ( newArr[j] == newArr[j + 1] &&
-             newArr[j] == newArr[j + 2] &&
-             newArr[j] == newArr[j + 3]) {
-          return true
+        if (
+          newArr[j] == newArr[j + 1] &&
+          newArr[j] == newArr[j + 2] &&
+          newArr[j] == newArr[j + 3]
+        ) {
+          return true;
         }
-  }
+      }
     }
-}
+  }
 };
 
 /* Criando condição de vitória horizontal */
@@ -177,16 +192,16 @@ const checkWinVertical = (arr) => {
   for (let i = 0; i < arr.length - 3; i++) {
     newArr = arr[i];
     for (let j = 0; j < newArr.length; j++) {
-        console.log([j])
-      if (newArr[j] !== 0){
+      if (newArr[j] !== 0) {
         if (newArr[j] > 0) {
-            if (newArr[j] == arr[i + 1][j] &&
-                newArr[j] == arr[i + 2][j] &&
-                newArr[j] == arr[i + 3][j]
-                ) {
-              return true
-            }
+          if (
+            newArr[j] == arr[i + 1][j] &&
+            newArr[j] == arr[i + 2][j] &&
+            newArr[j] == arr[i + 3][j]
+          ) {
+            return true;
           }
+        }
       }
     }
   }
@@ -224,12 +239,15 @@ container2.appendChild(buttonReset);
 
 /* Botão de reset */
 buttonReset.addEventListener("click", function () {
-  for (let i = 0; i < 6; i++) {
+  for (let i = 0; i <= 6; i++) {
     line = document.getElementById("line" + i);
     line.innerHTML = "";
   }
+  buttonReset.innerText = 'Reset';
+  arr = [[], [], [], [], [], []];
   placar.innerHTML = "<Br>Turno do Preto";
   condInicio = true;
+  condClonar = true;
   stop();
   start();
 });
