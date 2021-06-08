@@ -75,8 +75,10 @@ for (let i = 0; i <= 6; i++) {
 
     /* atualizar o array de elementos da coluna */
     let i = Number(col.id[col.id.length - 1]);
+    let nome;
+
     for (let j = 0; j < col.childElementCount; j++) {
-      let nome = col.children[j].id;
+      nome = col.children[j].id;
 
       if (nome === "Preto") {
         arr[i][j] = 1;
