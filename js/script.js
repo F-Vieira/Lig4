@@ -58,6 +58,7 @@ blocoV.addEventListener("click", function () {
 });
 
 /* colocando o bloco na columna */
+let nome;
 for (let i = 0; i <= 6; i++) {
   let col = document.getElementById("line" + i);
 
@@ -72,7 +73,7 @@ for (let i = 0; i <= 6; i++) {
     /* atualizar o array de elementos da coluna */
     let i = Number(col.id[col.id.length - 1]);
     for (let j = 0; j < col.childElementCount; j++) {
-      let nome = col.children[j].id;
+      nome = col.children[j].id;
       if (nome === "Preto") {
         arr[i][j] = 1;
         block = "";
@@ -83,7 +84,7 @@ for (let i = 0; i <= 6; i++) {
       }
     }
 
-    if (linha(arr) || coluna(arr) || diagonal1(arr) || diagonal2(arr)) {
+    if (checkWinVertical(arr) || checkWinHorizontal(arr) ) {
       placar.innerHTML = "<Br>" + "ganhou" + nome;
     }
   });
@@ -180,6 +181,7 @@ const checkWinVertical = (arr) =>{
                 else{countVermelho = 1}
 
                 if(countPreto == 4){
+                    
                     return true;
                 } 
                 if (countVermelho == 4){
