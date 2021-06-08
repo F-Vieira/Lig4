@@ -192,3 +192,13 @@ function time() {
     }
     timer.innerHTML = "Timer: " + sec + " sec";
 }
+
+/* Botão de reset */
+buttonReset.addEventListener("click", function () {
+  for (let i = 0; i <= 6; i++) {
+    line = document.getElementById("line" + i);
+    line.innerHTML = "";
+  }
+  stop();
+  start();
+});
