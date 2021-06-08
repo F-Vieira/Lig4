@@ -238,8 +238,11 @@ buttonReset.addEventListener("click", function () {
     line = document.getElementById("line" + i);
     line.innerHTML = "";
   }
+  buttonReset.innerText = 'Reset';
+  arr = [[], [], [], [], [], []];
   placar.innerHTML = "<Br>Turno do Preto";
   condInicio = true;
+  condClonar = true;
   stop();
   start();
 });
