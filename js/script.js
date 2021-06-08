@@ -1,16 +1,21 @@
-let body = document.body;
+let main = document.getElementById('main');
 
 let container1 = document.createElement("div");
 container1.id = "container1";
-body.appendChild(container1);
+main.appendChild(container1);
 
 let box = document.createElement("div");
 box.id = "box";
-body.appendChild(box);
+main.appendChild(box);
 
 let container2 = document.createElement("div");
 container2.id = "container2";
-body.appendChild(container2);
+main.appendChild(container2);
+
+let placar = document.createElement("div");
+placar.id = "placar";
+placar.innerText = "Placar:";
+container2.appendChild(placar);
 
 let line = "";
 let bloco = "";
@@ -67,7 +72,7 @@ for (let i = 0; i <= 6; i++) {
 
   col.addEventListener("click", function () {
     /* verificando não ter mais de 6 peças na coluna */
-    if (block != "" && col.childElementCount < 6) {
+    if (block !== "" && col.childElementCount < 6) {
       col.appendChild(block);
     } else {
       console.log("max");
@@ -93,7 +98,7 @@ for (let i = 0; i <= 6; i++) {
     }
 
     if (checkWinDiagonal1(arr) || checkWinDiagonal2(arr)) {
-      placar.innerHTML = "<Br>" + "Ganhou o " + nome;
+      placar.innerHTML = `<Br> ${nome} Ganhou.`;
       stop();
     } else {
       stop();
@@ -114,7 +119,6 @@ function checkWinDiagonal1(arr) {
           }
         }
         if (count === 4) {
-          console.log(`Diagonal Direita ${count}`);
           return true;
         }
       }
@@ -135,7 +139,6 @@ function checkWinDiagonal2(arr) {
         }
 
         if (count == 4) {
-          console.log(`Diagonal Esquerda ${count}`);
           return true;
         }
       }
@@ -212,10 +215,7 @@ const checkWinHorizontal = (arr) => {
   }
 };
 
-let placar = document.createElement("div");
-placar.id = "placar";
-placar.innerText = "Placar:";
-container2.appendChild(placar);
+
 
 /* Contador de tempo */
 let sec = 10;
