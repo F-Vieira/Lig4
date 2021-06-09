@@ -18,7 +18,7 @@ devButton.addEventListener("click", function(){
         devClick = 0;
     } 
 })
-
+let audio = document.getElementById('audio');
 let main = document.getElementById("main");
 
 let container1 = document.createElement("div");
@@ -134,7 +134,9 @@ const game = () => {
         ) {
   
           win();
-          
+          audio.pause();
+          audio.currentTime = 0;
+
         } else {
   
           stop();
@@ -285,7 +287,7 @@ const reset = () => {
     line = document.getElementById("line" + i);
     line.innerHTML = "";
   }
-
+  audio.play();
   placar.innerHTML = "Player 1";
   player.id = 'Preto';
   condInicio = true;
