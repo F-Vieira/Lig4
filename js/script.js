@@ -253,5 +253,6 @@ const reset = () => {
   jogadas = 0;
   whiteSpaceGame(arr);
   stop();
+  start();
 }
 buttonReset.addEventListener("click", reset);

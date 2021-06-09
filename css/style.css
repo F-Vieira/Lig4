@@ -55,10 +55,20 @@ h1 {
 }
 #Preto{
   background-color: black;
+  animation: go-back 1s;
 }
 #Vermelho {
   background-color: red;
+  animation: go-back 1s;
 }
+@keyframes go-back {
+  from {
+    transform: translateY(-100px);
+  }
+  to {
+    transform: translateY(0);
+  }
+} 
 
 #Timer {
   letter-spacing: 3px;
