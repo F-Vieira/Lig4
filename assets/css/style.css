@@ -138,7 +138,7 @@ body {
       right: 0;
       left:0;
       color: white;
-      background-image: url("teste.jpg");
+      background-image: url("../img/teste.jpg");
       background-repeat: no-repeat;
       background-size: cover;
       z-index: 1;
