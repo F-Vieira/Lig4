@@ -35,7 +35,7 @@ main.appendChild(container2);
 
 let placar = document.createElement("div");
 placar.id = "placar";
-placar.innerHTML = "Clicar em iniciar";
+placar.innerHTML = "Clique em iniciar";
 container2.appendChild(placar);
 
 let line = "";
@@ -60,6 +60,7 @@ let timer = document.createElement("div");
 timer.id = "Timer";
 container1.appendChild(timer);
 
+/* matriz de elementos */
 let arr = [[], [], [], [], [], []];
 
 const whiteSpaceGame = (arr) => {
@@ -71,82 +72,102 @@ const whiteSpaceGame = (arr) => {
 }
 whiteSpaceGame(arr);
 
-/* matriz de elementos */
-
-
 /* colocando o bloco na columna */
-let nome;
-let block = "";
+  let nome;
+  let block = "";
+  
+  let condInicio = false;
+  let condClonar = true;
+  
+  let jogadas = 0;
 
-let condInicio = false;
-let condClonar = true;
+const game = () => {
+  
+  for (let i = 0; i <= 6; i++) {
+    let col = document.getElementById("line" + i);
+  
+    col.addEventListener("click", function () {
+      /* verificando não ter mais de 6 peças na coluna */
+      if (col.childElementCount < 6) {
+        /* colocando a peça preta */
+        if (condInicio && condClonar) {
+          block = document.createElement("div");
+          block.id = "Preto";
+          block.classList.add("player");
+          col.appendChild(block);
+        }
+        /* colocando a peça vermelha */
+        if (condInicio && !condClonar) {
+          block = document.createElement("div");
+          block.id = "Vermelho";
+          block.classList.add("player");
+          col.appendChild(block);
+        }
+  
+        /* atualizar o array de elementos da coluna */
+        let i = Number(col.id[col.id.length - 1]);
+            
+        for (let j = 0; j < col.childElementCount; j++) {
+          nome = col.children[j].id;
+  
+          if (nome === "Preto") {
+            arr[j][i] = 1;
+            placar.innerHTML = "Player 2";
+            block = "";
+            player.id = "Vermelho";
+          }
+          if (nome === "Vermelho") {
+            arr[j][i] = 2;
+            placar.innerHTML = "Player 1";
+            block = "";
+            player.id = "Preto";
+          }
+        }
 
-let jogadas = 0;
-
-for (let i = 0; i <= 6; i++) {
-  let col = document.getElementById("line" + i);
-
-  col.addEventListener("click", function () {
-    /* verificando não ter mais de 6 peças na coluna */
-    if (col.childElementCount < 6) {
-      /* colocando a peça preta */
-      if (condInicio && condClonar) {
-        block = document.createElement("div");
-        block.id = "Preto";
-        block.classList.add("player");
-        col.appendChild(block);
-      }
-      /* colocando a peça vermelha */
-      if (condInicio && !condClonar) {
-        block = document.createElement("div");
-        block.id = "Vermelho";
-        block.classList.add("player");
-        col.appendChild(block);
-      }
-
-      /* atualizar o array de elementos da coluna */
-      let i = Number(col.id[col.id.length - 1]);
+        jogadas++;
+        
+        if (
+          checkWinHorizontal(arr) ||
+          checkWinVertical(arr) ||
+          checkWinDiagonal1(arr) ||
+          checkWinDiagonal2(arr)
+        ) {
+  
+          win();
           
-      for (let j = 0; j < col.childElementCount; j++) {
-        nome = col.children[j].id;
-
-        if (nome === "Preto") {
-          arr[j][i] = 1;
-          placar.innerHTML = "Turno do Vermelho";
-          block = "";
-          player.id = "Vermelho";
+        } else {
+  
+          stop();
+          start();
         }
-        if (nome === "Vermelho") {
-          arr[j][i] = 2;
-          placar.innerHTML = "Turno do Preto";
-          block = "";
-          player.id = "Preto";
+        
+        /* verifica se ouve empate */
+        if(jogadas === 42){
+          draw();
         }
-      }
-      jogadas++;
-      if (
-        checkWinHorizontal(arr) ||
-        checkWinVertical(arr) ||
-        checkWinDiagonal1(arr) ||
-        checkWinDiagonal2(arr)
-      ) {
-        placar.innerHTML = `${nome} Ganhou.`;
-        setTimeout(reset, 3000);
+        condClonar = !condClonar;
       } else {
-        stop();
-        start();
+        placar.innerText = 'Mudar de coluna';
       }
-      
-      /* verifica se ouve empate */
-      if(jogadas === 42){
-        placar.innerHTML = "Empate!";
-        setTimeout(reset, 3000);
-      }
-      condClonar = !condClonar;
-    } else {
-      placar.innerText = 'Mudar de coluna';
-    }
-  });
+    });
+  }
+}
+game();
+
+const win = () => {
+  stop();
+  condInicio = '';
+  condClonar = '';
+  player.id = 'Preto';
+  jogadas = 0;
+}
+
+const draw = () => {
+  stop();
+  condInicio = '';
+  condClonar = '';
+  player.id = 'Preto';
+  jogadas = 0;
 }
 
 function checkWinDiagonal1(arr) {
@@ -253,10 +274,9 @@ function stop() {
   clearInterval(lapse);
 }
 
-
 let buttonReset = document.createElement("button");
 buttonReset.id = "buttonReset";
-buttonReset.innerText = "Iniciar";
+buttonReset.innerText = "Reset";
 container2.appendChild(buttonReset);
 
 /* Botão de reset */
@@ -265,9 +285,8 @@ const reset = () => {
     line = document.getElementById("line" + i);
     line.innerHTML = "";
   }
-  buttonReset.innerText = 'Reset';
 
-  placar.innerHTML = "Turno do Preto";
+  placar.innerHTML = "Player 1";
   player.id = 'Preto';
   condInicio = true;
   condClonar = true;
