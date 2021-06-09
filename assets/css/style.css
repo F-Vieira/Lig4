@@ -39,11 +39,19 @@ body {
     }
 
     #Preto{
-      background-color: black;
+      background-color: #0000be;
+      background-image: url(/assets/img/venom.gif);
+      background-repeat: no-repeat;
+      background-size: 80%;
+      background-position: center;
       animation: go-back 1s;
     }
     #Vermelho {
       background-color: red;
+      background-image: url(/assets/img/spiderman.gif);
+      background-repeat: no-repeat;
+      background-size: 80%;
+      background-position: center;
       animation: go-back 1s;
     }
 
@@ -232,6 +240,27 @@ body {
       display: none;
     }
 
+    #win{
+      position: absolute;
+      display: none;
+      top:0;
+      bottom:0;
+      right: 0;
+      left:0;
+      background: rgba(0, 0, 0, 0.50) url("../img/backVenom.png");
+      background-repeat: no-repeat;
+      background-size: 100%;
+      z-index: 1;
+    }
+    div#win>div#win_animate{
+      margin: 0 auto;
+      height: 250px;
+      background-image: url("../img/venomWin.gif");
+      background-repeat: no-repeat;
+      background-size: 100%;
+      background-position: center;
+      margin-top: 100px;
+    }
 @media screen and (min-width: 768px) {
   #main {
     max-width: 500px;
