@@ -4,9 +4,6 @@ html, body, main, div, button{
   box-sizing: border-box;
   border: none;
 }
-:root {
-  --font-family-default: "Viaoda Libre", cursive;
-}
 
 body {
   padding: 0.75rem;
@@ -15,8 +12,21 @@ body {
   height: 100vh;
   display: flex;
   justify-content: center;
+  overflow: hidden;
 }
-
+body::after{
+  content: "";
+  background: url('../img/backgroundMobile.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0.5;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;  
+}
 
 #main {
   flex-grow: 1;
@@ -240,7 +250,7 @@ body {
       display: none;
     }
 
-    #win{
+    #winVenom{
       position: absolute;
       display: none;
       top:0;
@@ -251,8 +261,9 @@ body {
       background-repeat: no-repeat;
       background-size: 100%;
       z-index: 1;
+      animation: go-back 1s;
     }
-    div#win>div#win_animate{
+    div#winVenom>div#win_animate{
       margin: 0 auto;
       height: 250px;
       background-image: url("../img/venomWin.gif");
@@ -260,8 +271,85 @@ body {
       background-size: 100%;
       background-position: center;
       margin-top: 100px;
+      animation: go-back 3s;
     }
+    #winSpiderman{
+      position: absolute;
+      display: block;
+      top:0;
+      bottom:0;
+      right: 0;
+      left:0;
+      background: rgba(0, 0, 0, 0.50) url("../img/backSpiderman.png");
+      background-repeat: no-repeat;
+      background-size: 100%;
+      z-index: 1;
+      animation: go-left 1s;
+    }
+    div#winSpiderman>div#win_animate{
+      margin: 0 auto;
+      height: 250px;
+      background-image: url("../img/spidermanWin.gif");
+      background-repeat: no-repeat;
+      background-size: 100%;
+      background-position: center;
+      margin-top: 100px;
+      animation: go-left 3s;
+    }
+    #Empate{
+      position: absolute;
+      display: none;
+      top:0;
+      bottom:0;
+      right: 0;
+      left:0;
+      background: rgba(0, 0, 0, 0.50) url("../img/backEmpate.png");
+      background-repeat: no-repeat;
+      background-size: 100%;
+      z-index: 1;
+      animation: go-right 2s;
+    }
+    div#Empate>div#win_animate{
+      margin: 0 auto;
+      height: 250px;
+      background-image: url("../img/empate.gif");
+      background-repeat: no-repeat;
+      background-size: 45%;
+      background-position: center;
+      margin-top: 110px;
+      animation: go-right 3s;
+    }
+    @keyframes go-left {
+      from {
+        transform: translateX(-100%);
+      }
+      to {
+        transform: translateY(0);
+      }
+    } 
+    @keyframes go-right {
+      from {
+        transform: translateX(250%);
+      }
+      to {
+        transform: translateY(0);
+      }
+    } 
+
 @media screen and (min-width: 768px) {
+  body::after{
+    content: "";
+    background: url('../img/backgroundDesktop.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0.5;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;  
+  }
   #main {
     max-width: 500px;
   }
@@ -301,4 +389,57 @@ body {
   #main{
     height: 75%;
   }
+  
+  #winVenom{
+    background-position: center;
+    background-size: 18%;
+    animation: go-up 2s;
+  }
+  div#winVenom>div#win_animate{
+    margin: 0 auto;
+    height: 200px;
+    background-size: 18%;
+    margin-top: 250px;
+    animation: growth 8s;
+  }
+  #winSpiderman{
+    background-position: center;
+    background-size: 18%;
+    animation: go-up 2s;
+  }
+  div#winSpiderman>div#win_animate{
+    margin: 0 auto;
+    height: 200px;
+    background-size: 18%;
+    margin-top: 250px;
+    animation: growth 8s;
+  }
+  div#Empate{
+    background-position: center;
+    background-size: 18%;
+    animation: go-up 2s;
+  }
+  div#Empate>div#win_animate{
+    margin: 0 auto;
+    height: 200px;
+    background-size: 8%;
+    margin-top: 260px;
+    animation: growth 8s;
+  }
+  @keyframes go-up {
+    from {
+      transform: translateY(100vh);
+    }
+    to {
+      transform: translateY(0);
+    }
+  } 
+  @keyframes growth {
+    from {
+      transform: scale(0.1);
+    }
+    to {
+      transform: scale(1);
+    }
+  }   
 }
