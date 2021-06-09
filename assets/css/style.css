@@ -4,9 +4,6 @@ html, body, main, div, button{
   box-sizing: border-box;
   border: none;
 }
-:root {
-  --font-family-default: "Viaoda Libre", cursive;
-}
 
 body {
   padding: 0.75rem;
@@ -16,7 +13,19 @@ body {
   display: flex;
   justify-content: center;
 }
-
+body::after{
+  content: "";
+  background: url('../img/backgroundMobile.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0.5;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;  
+}
 
 #main {
   flex-grow: 1;
@@ -262,6 +271,19 @@ body {
       margin-top: 100px;
     }
 @media screen and (min-width: 768px) {
+  body::after{
+    content: "";
+    background: url('../img/backgroundDesktop.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0.5;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;  
+  }
   #main {
     max-width: 500px;
   }
