@@ -1,3 +1,24 @@
+/* Dom e Funções para o Start button e Dev button*/ 
+const startScreen = document.getElementById("startScreen");
+const startButton = document.getElementById("startButton");
+startButton.addEventListener("click", function(){
+    startScreen.classList.add("hidden")
+})
+
+let devClick = 0;
+const devList = document.getElementById("devList");
+const devButton = document.getElementById("developer__button");
+devButton.addEventListener("click", function(){
+    if(devClick === 0){
+        devList.classList.remove("hidden");
+        devClick = 1;   
+    }
+    else{
+        devList.classList.add("hidden");
+        devClick = 0;
+    } 
+})
+
 let main = document.getElementById("main");
 
 let container1 = document.createElement("div");
