@@ -1,76 +1,115 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lig-4</title>
 
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
-    <link href="http://fonts.cdnfonts.com/css/comix-loud" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap"
+      rel="stylesheet"
+    />
+    <link href="http://fonts.cdnfonts.com/css/comix-loud" rel="stylesheet" />
 
-    <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="assets/css/style.css">
-
-</head>
-<body>
+    <link
+      rel="shortcut icon"
+      href="assets/img/favicon.ico"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
     <audio id="audio">
-        <source src="assets/audio/spiderMan.mp3" type="audio/mpeg">
+      <source src="assets/audio/spiderMan.mp3" type="audio/mpeg" />
     </audio>
+
     <div id="startScreen" class="startScreen">
-        <div class="startScreen__body">
-            <h1 class="startScreen__title">AMONG<br><br>LIG 4</h1>  
+      <div class="startScreen__body">
+        <h1 class="startScreen__title">AMONG<br /><br />LIG 4</h1>
+      </div>
+
+      <input
+        type="button"
+        value="&lt;- START -&gt;"
+        class="startScreen__button"
+        id="startButton"
+      />
+
+      <div id="developer" class="developer">
+        <input
+          id="developer__button"
+          type="button"
+          class="developer__button"
+          value="developers"
+        />
+        <div id="devList" class="developer__list hidden">
+          <ul>
+            <li>@F-Vieira</li>
+            <li>@Juancarlos1983</li>
+            <li>@hirokz7</li>
+          </ul>
         </div>
-        <input type="button" value="&lt;- START -&gt;" class="startScreen__button" id="startButton"> 
-        <div id="developer"class="developer">
-            <input id="developer__button" type="button" class="developer__button" value="developers">
-            <div id="devList" class="developer__list hidden">
-                <ul>
-                <li>@F-Vieira</li>
-                <li>@Juancarlos1983</li>
-                <li>@hirokz7</li>
-                </ul>
-            </div>
-        </div>
-    </div>   
+      </div>
+
+    </div>
+
     <div id="selectScreen" class="selectScreen">
-        <div class="selecttScreen__body">
-            <h1 class="selectScreen__title">ESCOLHA<br><br>SEU PERSONAGEM!</h1>  
+      <div class="selecttScreen__body">
+        <h1 class="selectScreen__title">ESCOLHA<br /><br />SEU PERSONAGEM!</h1>
+      </div>
+
+      <div class="selectScreen__container">
+        <div class="selectScreen__character">
+          <img
+            src="assets/img/spiderman.png"
+            id="selectSpider"
+            alt="spiderman"
+            class="selectScreen__spider"
+          />
+          <p>HOMEM-ARANHA<br /><br />TRIPULANTE</p>
         </div>
-        <div class="selectScreen__container">
-            <div class="selectScreen__character">   
-                <img src="assets/img/spiderman.png" id="selectSpider" alt="spiderman" class="selectScreen__spider"> 
-                <p>HOMEM-ARANHA<br><br>TRIPULANTE</p> 
-            </div>
-            <div class="selectScreen__character">
-                <img src="assets/img/venom.png" id="selectVenom"alt="venom" class="selectScreen__venom">
-                <p>VENOM<br><br>IMPOSTOR</p> 
-            </div>
-           
-            
+
+        <div class="selectScreen__character">
+          <img
+            src="assets/img/venom.png"
+            id="selectVenom"
+            alt="venom"
+            class="selectScreen__venom"
+          />
+          <p>VENOM<br /><br />IMPOSTOR</p>
         </div>
-    </div>  
-    <div id="winSpiderman" class="win_spiderman hidden">
-        <div id="win_animate"></div>
-        <div id="div_menssage">
-            <h1 id="win_menssage"></h1>
-        </div>
+
+      </div>
     </div>
-    <div id="winVenom" class="win_venon hidden">
-        <div id="win_animate"></div>
-        <div id="div_menssage">
-            <h1 id="win_menssage"></h1>
-        </div>
+
+    <div id="winSpiderman" class="win hidden">
+      <div id="spiderman_animate" class="win_animate"></div>
+      <div id="spiderman_div_message" class="div_message">
+        <h1 id="spiderman_message" class="message">Spiderman Win !!</h1>
+      </div>
     </div>
-    <div id="Empate" class="empate hidden">
-        <div id="win_animate"></div>
-        <div id="div_menssage">
-            <h1 id="win_menssage"></h1>
-        </div>
+
+    <div id="winVenom" class="win hidden">
+      <div id="venom_animate" class="win_animate"></div>
+      <div id="venom_div_message" class="div_message">
+        <h1 id="venom_message" class="message">Venom Win!!</h1>
+      </div>
     </div>
+
+    <div id="draw" class="draw hidden">
+      <div id="draw_animate"></div>
+      <div id="draw_div_message" class="div_message">
+        <h1 id="draw_message" class="message">Empatou !!</h1>
+      </div>
+    </div>
+
     <main id="main"></main>
     <script src="assets/js/script.js"></script>
-</body>
+  </body>
 </html>
