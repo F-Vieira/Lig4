@@ -98,7 +98,7 @@ body::after{
     position: absolute;
     border-left: 0px solid transparent;
     border-right: 8px solid transparent;
-    border-bottom: 182px solid rgba(40, 136, 192, 0.747);
+    border-bottom: 182px solid rgba(#005baa73);
     border-radius: 0px 20px 20px 0px;
     width: 5px;
     bottom: 0;
@@ -109,7 +109,7 @@ body::after{
     position: absolute;
     border-left: 0px solid transparent;
     border-right: 8px solid transparent;
-    border-bottom: 182px solid rgba(40, 136, 192, 0.747);
+    border-bottom: 182px solid rgba(#005baa73);
     border-radius: 20px 0px 0px 20px;
     width: 5px;
     bottom: 0;
@@ -129,9 +129,6 @@ body::after{
       border-left: none;
 
       cursor: pointer;
-    }
-    .line:nth-child(1) {
-      border-left: 2px solid black;
     }
 
   #container2 {
