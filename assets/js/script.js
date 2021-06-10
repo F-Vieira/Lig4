@@ -18,6 +18,18 @@ devButton.addEventListener("click", function(){
         devClick = 0;
     } 
 })
+
+/* Dom e Funções para a Seleção de Personagens*/
+const selectScreen = document.getElementById("selectScreen");
+const spider = document.getElementById("selectSpider");
+spider.addEventListener("click", function(){
+    selectScreen.classList.add("hidden")
+})
+const venom = document.getElementById("selectVenom");
+venom.addEventListener("click", function(){
+    selectScreen.classList.add("hidden")
+})
+
 let audio = document.getElementById('audio');
 let main = document.getElementById("main");
 
