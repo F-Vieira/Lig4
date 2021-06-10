@@ -20,14 +20,21 @@ devButton.addEventListener("click", function(){
 })
 
 /* Dom e Funções para a Seleção de Personagens*/
+let playerAux;
 const selectScreen = document.getElementById("selectScreen");
 const spider = document.getElementById("selectSpider");
 spider.addEventListener("click", function(){
-    selectScreen.classList.add("hidden")
+    selectScreen.classList.add("hidden");
+    reset();
+    player.id = "Vermelho";
+    playerAux = "Vermelho";
 })
 const venom = document.getElementById("selectVenom");
 venom.addEventListener("click", function(){
-    selectScreen.classList.add("hidden")
+    selectScreen.classList.add("hidden");
+    reset();
+    player.id = "Preto";
+    playerAux = "Preto";
 })
 
 let audio = document.getElementById('audio');
@@ -329,7 +336,8 @@ const reset = () => {
   spidermanWin.classList.add('hidden');
   drawGame.classList.add('hidden');
 
-  // audio.play();
+  audio.play();
+  audio.volume = 0.2;
   placar.innerHTML = "Player 1";
   player.id = 'Preto';
   condInicio = true;
