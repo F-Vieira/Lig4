@@ -107,18 +107,6 @@ body::after{
     background-color: rgba(26, 26, 78, 0.904);
   }
 }
-@keyframes flash {
-  0%{
-    background-color: rgba(26, 26, 78, 0.904);
-  }
-  50%{
-    background-color: rgba(78, 26, 26, 0.904);
-  }
-  100%{
-    background-color: rgba(26, 26, 78, 0.904);
-  }
-}
-
 
 .startScreen__button:hover{
   background-color: red
