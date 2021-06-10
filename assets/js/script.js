@@ -54,7 +54,7 @@ constructTable();
 let player = document.createElement("div");
 player.id = "Preto";
 player.classList.add("player");
-container1.appendChild(player);
+container2.appendChild(player);
 
 let timer = document.createElement("div");
 timer.id = "Timer";
@@ -279,7 +279,7 @@ function stop() {
 let buttonReset = document.createElement("button");
 buttonReset.id = "buttonReset";
 buttonReset.innerText = "Reset";
-container2.appendChild(buttonReset);
+//container2.appendChild(buttonReset);
 
 /* Botão de reset */
 const reset = () => {
