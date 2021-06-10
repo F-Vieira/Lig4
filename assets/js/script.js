@@ -314,6 +314,7 @@ function time() {
     clearInterval(lapse);
     placar.innerHTML = "Acabou o tempo";
     condInicio = false;
+    reset();
   }
   timer.innerHTML = "Timer:<br>" + sec;
 }
