@@ -159,7 +159,7 @@ body::after{
       background-image: url("../img/teste.jpg");
       background-repeat: no-repeat;
       background-size: cover;
-      z-index: 1;
+      z-index: 2;
     }
     
     .startScreen__body{
@@ -527,7 +527,7 @@ body::after{
     background:black url("../img/selectGalaxy.png");
     background-repeat: no-repeat;
     background-size: cover;
-    z-index: 1;
+    z-index: 2;
   }
 
   .selectScreen__title{
