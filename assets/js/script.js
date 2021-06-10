@@ -28,6 +28,7 @@ spider.addEventListener("click", function(){
     reset();
     player.id = "Vermelho";
     playerAux = "Vermelho";
+    placar.innerHTML = "Spider-Man";
 })
 const venom = document.getElementById("selectVenom");
 venom.addEventListener("click", function(){
@@ -35,6 +36,7 @@ venom.addEventListener("click", function(){
     reset();
     player.id = "Preto";
     playerAux = "Preto";
+    placar.innerHTML = "Venom";
 })
 
 let audio = document.getElementById('audio');
@@ -132,13 +134,13 @@ const game = () => {
   
           if (nome === "Preto") {
             arr[j][i] = 1;
-            placar.innerHTML = "Player 2";
+            placar.innerHTML = "Venom";
             block = "";
             player.id = "Vermelho";
           }
           if (nome === "Vermelho") {
             arr[j][i] = 2;
-            placar.innerHTML = "Player 1";
+            placar.innerHTML = "Spider-Man";
             block = "";
             player.id = "Preto";
           }
@@ -323,7 +325,6 @@ function stop() {
 let buttonReset = document.createElement("button");
 buttonReset.id = "buttonReset";
 buttonReset.innerText = "Reset";
-container2.appendChild(buttonReset); //!Excluir depois q o jogo iniciar quando selecionar o player
 
 /* Botão de reset */
 const reset = () => {
@@ -337,8 +338,7 @@ const reset = () => {
   drawGame.classList.add('hidden');
 
   audio.play();
-  audio.volume = 0.2;
-  placar.innerHTML = "Player 1";
+  audio.volume = 0.1;
   player.id = 'Preto';
   condInicio = true;
   condClonar = true;
