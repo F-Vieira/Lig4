@@ -47,6 +47,8 @@ body::after{
       border-radius: 50%;
       width: 28px;
       height: 28px;
+      margin-top: 1px;
+      margin-bottom: 1px;
     }
 
     #Preto{
@@ -82,10 +84,36 @@ body::after{
     }
 
   #box {
-    height: 170px;
+    height: 178px;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+    background: rgba(255, 255, 255, 0.267) url(../img/backJogo.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+  }
+  #box:after{
+    content: "";
+    position: absolute;
+    border-left: 0px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 178px solid rgba(40, 136, 192, 0.747);
+    border-radius: 0px 20px 20px 0px;
+    width: 5px;
+    bottom: 0;
+    right: -12px;
+  }
+  #box:before{
+    content: "";
+    position: absolute;
+    border-left: 0px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 178px solid rgba(40, 136, 192, 0.747);
+    border-radius: 20px 0px 0px 20px;
+    width: 5px;
+    bottom: 0;
+    left: -12px;
   }
 
     .line {
@@ -97,7 +125,6 @@ body::after{
       height: 100%;
       padding: 0 15px;
 
-      border: 2px solid black;
       border-top: none;
       border-left: none;
 
@@ -124,7 +151,7 @@ body::after{
       justify-content: center;
 
       width: 100%;
-      height: 60px;
+      height: 55px;
 
       border-radius: 50px;
       background-color: rgb(255, 255, 255);
@@ -137,7 +164,6 @@ body::after{
       width: 0;
       height: 0;
       position: absolute;
-      background: rgba(255, 255, 255, 0);
       border-left: 0px solid transparent;
       border-right: 30px solid transparent;
       border-top: 20px solid white;
@@ -272,7 +298,8 @@ body::after{
       left:0;
       background: rgba(0, 0, 0, 0.50) url("../img/backVenom.png");
       background-repeat: no-repeat;
-      background-size: 100%;
+      background-size: 274px;
+      background-position: center;
       z-index: 1;
       animation: go-back 1s;
     }
@@ -281,10 +308,10 @@ body::after{
       height: 250px;
       background-image: url("../img/venomWin.gif");
       background-repeat: no-repeat;
-      background-size: 100%;
+      background-size: 260px;
       background-position: center;
-      margin-top: 100px;
-      animation: go-back 3s;
+      margin-top: 30vh;
+      animation: growth 8s;
     }
     #winSpiderman{
       position: absolute;
@@ -294,20 +321,21 @@ body::after{
       right: 0;
       left:0;
       background: rgba(0, 0, 0, 0.50) url("../img/backSpiderman.png");
-      background-repeat: no-repeat;
-      background-size: 100%;
+      background-repeat:repeat-x;
+      background-size: 274px;
+      background-position: center;
       z-index: 1;
-      animation: go-left 1s;
+      animation: growth 8s;
     }
     div#winSpiderman>div#win_animate{
       margin: 0 auto;
       height: 250px;
       background-image: url("../img/spidermanWin.gif");
       background-repeat: no-repeat;
-      background-size: 100%;
+      background-size: 260px;
       background-position: center;
-      margin-top: 100px;
-      animation: go-left 3s;
+      margin-top: 32vh;
+      animation: growth 8s;
     }
     #Empate{
       position: absolute;
@@ -318,7 +346,8 @@ body::after{
       left:0;
       background: rgba(0, 0, 0, 0.50) url("../img/backEmpate.png");
       background-repeat: no-repeat;
-      background-size: 100%;
+      background-position: center;
+      background-size: 274px;
       z-index: 1;
       animation: go-right 2s;
     }
@@ -327,11 +356,27 @@ body::after{
       height: 250px;
       background-image: url("../img/empate.gif");
       background-repeat: no-repeat;
-      background-size: 45%;
+      background-size: 105px;
       background-position: center;
-      margin-top: 110px;
-      animation: go-right 3s;
+      margin-top: 32vh;
+      animation: growth 8s;
     }
+    @keyframes go-up {
+      from {
+        transform: translateY(100vh);
+      }
+      to {
+        transform: translateY(0);
+      }
+    } 
+    @keyframes growth {
+      from {
+        transform: scale(0.1);
+      }
+      to {
+        transform: scale(1);
+      }
+    } 
     @keyframes go-left {
       from {
         transform: translateX(-100%);
@@ -370,8 +415,21 @@ body::after{
       width: 35px;
       height: 35px;
     }
-    #box {
-      height: 215px;
+    #box {    
+      height: 240px;
+    }
+    #box:after{
+      border-bottom: 240px solid rgba(40, 136, 192, 0.747);
+    }
+    #box:before{
+      border-bottom: 240px solid rgba(40, 136, 192, 0.747);
+    }
+    .player {
+      border-radius: 50%;
+      width: 37px;
+      height: 37px;
+      margin-top: 2px;
+      margin-bottom: 1px;
     }
       .line {
         width: 40px;
@@ -385,7 +443,6 @@ body::after{
       width: 130px;
     }
 }
-
 @media screen and (min-width: 1024px) {
   body{
     align-items: center;
@@ -396,6 +453,22 @@ body::after{
     #container2 {
       margin-top: 4rem;
     }
+    #box {    
+      height: 240px;
+    }
+    #box:after{
+      border-bottom: 240px solid rgba(40, 136, 192, 0.747);
+    }
+    #box:before{
+      border-bottom: 240px solid rgba(40, 136, 192, 0.747);
+    }
+    .player {
+      border-radius: 50%;
+      width: 37px;
+      height: 37px;
+      margin-top: 2px;
+      margin-bottom: 1px;
+    }
 }
 
 @media screen and (min-width: 1440px) {
@@ -403,58 +476,20 @@ body::after{
     height: 75%;
   }
   
-  #winVenom{
-    background-position: center;
-    background-size: 18%;
-    animation: go-up 2s;
+  #box {    
+    height: 240px;
   }
-  div#winVenom>div#win_animate{
-    margin: 0 auto;
-    height: 200px;
-    background-size: 18%;
-    margin-top: 250px;
-    animation: growth 8s;
+  #box:after{
+    border-bottom: 240px solid rgba(40, 136, 192, 0.747);
   }
-  #winSpiderman{
-    background-position: center;
-    background-size: 18%;
-    animation: go-up 2s;
+  #box:before{
+    border-bottom: 240px solid rgba(40, 136, 192, 0.747);
   }
-  div#winSpiderman>div#win_animate{
-    margin: 0 auto;
-    height: 200px;
-    background-size: 18%;
-    margin-top: 250px;
-    animation: growth 8s;
-  }
-  div#Empate{
-    background-position: center;
-    background-size: 18%;
-    animation: go-up 2s;
-  }
-  div#Empate>div#win_animate{
-    margin: 0 auto;
-    height: 200px;
-    background-size: 8%;
-    margin-top: 260px;
-    animation: growth 8s;
-  }
-  @keyframes go-up {
-    from {
-      transform: translateY(100vh);
-    }
-    to {
-      transform: translateY(0);
-    }
-  } 
-  @keyframes growth {
-    from {
-      transform: scale(0.1);
-    }
-    to {
-      transform: scale(1);
-    }
-  } 
-  
-  
+  .player {
+    border-radius: 50%;
+    width: 37px;
+    height: 37px;
+    margin-top: 2px;
+    margin-bottom: 1px;
+  }  
 }
