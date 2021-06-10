@@ -114,14 +114,18 @@ const game = () => {
         /* colocando a peça preta */
         if (condInicio && condClonar) {
           block = document.createElement("div");
-          block.id = "Preto";
+          block.id = playerAux;
           block.classList.add("player");
           col.appendChild(block);
         }
         /* colocando a peça vermelha */
         if (condInicio && !condClonar) {
           block = document.createElement("div");
-          block.id = "Vermelho";
+          if (playerAux === 'Preto'){
+            block.id = "Vermelho";
+          } else {
+            block.id = 'Preto';
+          }
           block.classList.add("player");
           col.appendChild(block);
         }
@@ -134,13 +138,13 @@ const game = () => {
   
           if (nome === "Preto") {
             arr[j][i] = 1;
-            placar.innerHTML = "Venom";
+            placar.innerHTML = "Spider-Man";
             block = "";
             player.id = "Vermelho";
           }
           if (nome === "Vermelho") {
             arr[j][i] = 2;
-            placar.innerHTML = "Spider-Man";
+            placar.innerHTML = "Venom";
             block = "";
             player.id = "Preto";
           }
