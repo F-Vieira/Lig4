@@ -31,6 +31,7 @@ venom.addEventListener("click", function(){
 })
 
 let audio = document.getElementById('audio');
+
 let main = document.getElementById("main");
 
 let container1 = document.createElement("div");
@@ -146,8 +147,6 @@ const game = () => {
         ) {
   
           win();
-          audio.pause();
-          audio.currentTime = 0;
 
         } else {
   
@@ -167,22 +166,6 @@ const game = () => {
   }
 }
 game();
-
-const win = () => {
-  stop();
-  condInicio = '';
-  condClonar = '';
-  player.id = 'Preto';
-  jogadas = 0;
-}
-
-const draw = () => {
-  stop();
-  condInicio = '';
-  condClonar = '';
-  player.id = 'Preto';
-  jogadas = 0;
-}
 
 function checkWinDiagonal1(arr) {
   for (let i = 0; i < arr.length - 3; i++) {
@@ -261,6 +244,48 @@ const checkWinVertical = (arr) => {
   }
 };
 
+let spidermanWin = document.getElementById('winSpiderman');
+let spidermanMessageWin = document.getElementById('spiderman_div_message');
+
+let venomWin = document.getElementById('winVenom');
+let venomMessageWin = document.getElementById('venom_div_message');
+
+const win = () => {
+  if (nome === 'Preto'){
+    venomMessageWin.appendChild(buttonReset);
+    venomWin.classList.remove('hidden');
+
+  } else if (nome === 'Vermelho'){
+    spidermanMessageWin.appendChild(buttonReset);
+    spidermanWin.classList.remove('hidden');
+   
+  }
+
+  audio.pause();
+  audio.currentTime = 0;
+  stop();
+  condInicio = '';
+  condClonar = '';
+  player.id = 'Preto';
+  jogadas = 0;
+}
+let drawGame = document.getElementById('draw');
+let drawMessage = document.getElementById('draw_div_message');
+
+const draw = () => {
+
+  drawMessage.appendChild(buttonReset);
+  drawGame.classList.remove('hidden');
+
+  audio.pause();
+  audio.currentTime = 0;
+  stop();
+  condInicio = '';
+  condClonar = '';
+  player.id = 'Preto';
+  jogadas = 0;
+}
+
 /* Contador de tempo */
 let sec = 10;
 let interval = 1000; // millisegundos
@@ -291,7 +316,7 @@ function stop() {
 let buttonReset = document.createElement("button");
 buttonReset.id = "buttonReset";
 buttonReset.innerText = "Reset";
-//container2.appendChild(buttonReset);
+container2.appendChild(buttonReset); //!Excluir depois q o jogo iniciar quando selecionar o player
 
 /* Botão de reset */
 const reset = () => {
@@ -299,7 +324,12 @@ const reset = () => {
     line = document.getElementById("line" + i);
     line.innerHTML = "";
   }
-  audio.play();
+
+  venomWin.classList.add('hidden');
+  spidermanWin.classList.add('hidden');
+  drawGame.classList.add('hidden');
+
+  // audio.play();
   placar.innerHTML = "Player 1";
   player.id = 'Preto';
   condInicio = true;
