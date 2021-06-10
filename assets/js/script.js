@@ -132,10 +132,10 @@ const game = () => {
           checkWinDiagonal1(arr) ||
           checkWinDiagonal2(arr)
         ) {
-  
-          win();
+          
           audio.pause();
           audio.currentTime = 0;
+          win();
 
         } else {
   
@@ -162,6 +162,12 @@ const win = () => {
   condClonar = '';
   player.id = 'Preto';
   jogadas = 0;
+  if(nome === "Preto"){
+    document.getElementById("winVenom").style.display = "block";
+  }
+  if(nome === "Vermelho"){
+    document.getElementById("winSpiderman").style.display = "block";
+  }
 }
 
 const draw = () => {
@@ -170,6 +176,8 @@ const draw = () => {
   condClonar = '';
   player.id = 'Preto';
   jogadas = 0;
+  
+  document.getElementById("Empate").style.display = "block";
 }
 
 function checkWinDiagonal1(arr) {
@@ -279,7 +287,7 @@ function stop() {
 let buttonReset = document.createElement("button");
 buttonReset.id = "buttonReset";
 buttonReset.innerText = "Reset";
-//container2.appendChild(buttonReset);
+container2.appendChild(buttonReset);
 
 /* Botão de reset */
 const reset = () => {

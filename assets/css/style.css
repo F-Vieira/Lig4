@@ -84,12 +84,12 @@ body::after{
     }
 
   #box {
-    height: 178px;
+    height: 182px;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
-    background: rgba(255, 255, 255, 0.267) url(../img/backJogo.png);
+    background: rgba(255, 255, 255, 0.473) url(../img/backJogo.png);
     background-repeat: no-repeat;
     background-size: 100%;
   }
@@ -98,7 +98,7 @@ body::after{
     position: absolute;
     border-left: 0px solid transparent;
     border-right: 8px solid transparent;
-    border-bottom: 178px solid rgba(40, 136, 192, 0.747);
+    border-bottom: 182px solid rgba(40, 136, 192, 0.747);
     border-radius: 0px 20px 20px 0px;
     width: 5px;
     bottom: 0;
@@ -109,7 +109,7 @@ body::after{
     position: absolute;
     border-left: 0px solid transparent;
     border-right: 8px solid transparent;
-    border-bottom: 178px solid rgba(40, 136, 192, 0.747);
+    border-bottom: 182px solid rgba(40, 136, 192, 0.747);
     border-radius: 20px 0px 0px 20px;
     width: 5px;
     bottom: 0;
@@ -287,6 +287,19 @@ body::after{
     
     .hidden{
       display: none;
+    }
+    
+    h1{
+      background-color: red; 
+      color: white; 
+      text-align: center;    
+      margin-top: 60px;
+      padding: 0;
+    }
+    #div_menssage{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     #winVenom{
