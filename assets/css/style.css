@@ -63,23 +63,16 @@ body::after{
       font-family: 'Comix Loud', sans-serif;
       font-weight: normal;
       font-size:30px;
+      background: rgb(204, 0, 0);
+      line-height: 1.8;
       width: 280px;
       height: 170px;
       margin: 0 auto;
       padding-top: 45px;
       border-radius: 40px;
       box-shadow: 0px 10px 16px 2px rgba(0, 0, 0, 0.692);
-      animation: backloop 3s;
-      animation-iteration-count: infinite;
     }
-    @keyframes backloop {
-      0% {background-color: rgba(104, 9, 9, 0.904);
-          color: rgb(36, 36, 219);}
-      50% {background-color: rgba(22, 22, 22, 0.877);
-          color: rgb(255, 255, 255);}
-      100% {background-color: rgba(104, 9, 9, 0.904);
-            color: rgb(36, 36, 219);}
-    }
+    
 
 
 .startScreen__button{
@@ -101,7 +94,7 @@ body::after{
     background-color: rgba(26, 26, 78, 0.904);
   }
   50%{
-    background-color: rgba(78, 26, 26, 0.904);
+    background-color: rgba(145, 8, 8, 0.904);
   }
   100%{
     background-color: rgba(26, 26, 78, 0.904);
@@ -162,6 +155,7 @@ body::after{
   background-repeat: no-repeat;
   background-size: cover;
   z-index: 1;
+  letter-spacing: 1px;
 }
 
   .selectScreen__title{
@@ -259,7 +253,7 @@ body::after{
   .win_animate{
     height: 200px;
     margin: 30% 0 20%;
-
+    
     background-repeat: no-repeat;
     background-size: 100% 80%;
     background-position: center;
@@ -289,6 +283,11 @@ body::after{
     text-align: center;
   }
     .message{
+      font-family: 'Comix Loud', sans-serif;
+      margin-top: 180px;
+      font-size: 18px;
+      letter-spacing: 1px;
+      text-shadow: 2px 6px 1px black;
       color: #fff;
       margin-bottom: 2rem;
     }
