@@ -156,6 +156,7 @@ const game = () => {
         ) {
   
           win();
+          stop();
 
         } else {
   
@@ -171,6 +172,8 @@ const game = () => {
       } else {
         placar.innerText = 'Mudar de coluna';
       }
+      stop();
+      start();
     });
   }
 }
@@ -297,9 +300,9 @@ const draw = () => {
 
 /* Contador de tempo */
 let sec = 10;
-let interval = 1000; // millisegundos
+let interval = 600; // millisegundos
 let lapse;
-timer.innerHTML = "Timer:<br>" + sec + " sec";
+timer.innerHTML = "Timer:<br>" + sec;
 
 function time() {
   sec--;
@@ -308,7 +311,7 @@ function time() {
     placar.innerHTML = "Acabou o tempo";
     condInicio = false;
   }
-  timer.innerHTML = "Timer:<br>" + sec + " sec";
+  timer.innerHTML = "Timer:<br>" + sec;
 }
 
 function start() {
@@ -339,7 +342,7 @@ const reset = () => {
 
   audio.play();
   audio.volume = 0.1;
-  player.id = 'Preto';
+  player.id = playerAux;
   condInicio = true;
   condClonar = true;
   jogadas = 0;
