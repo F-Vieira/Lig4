@@ -324,6 +324,8 @@ body::after{
       border-radius: 50%;
       width: 28px;
       height: 28px;
+      margin-top: 1px;
+      margin-bottom: 1px;
     }
 
     #Preto{
@@ -359,10 +361,38 @@ body::after{
     }
 
   #box {
-    height: 170px;
+    height: 180px;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+    
+    background: rgba(255, 255, 255, 0.473) url(../img/backJogo.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+  }
+
+  #box:after{
+    content: "";
+    position: absolute;
+    border-left: 0px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 180px solid rgba(0, 0, 255, 0.37);
+    border-radius: 0px 20px 20px 0px;
+    width: 5px;
+    bottom: 0;
+    right: -12px;
+  }
+  #box:before{
+    content: "";
+    position: absolute;
+    border-left: 0px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 180px solid rgba(0, 0, 255, 0.37);
+    border-radius: 20px 0px 0px 20px;
+    width: 5px;
+    bottom: 0;
+    left: -12px;
   }
 
     .line {
@@ -374,14 +404,9 @@ body::after{
       height: 100%;
       padding: 0 15px;
 
-      border: 2px solid black;
-      border-top: none;
-      border-left: none;
+      border: 0;
 
       cursor: pointer;
-    }
-    .line:nth-child(1) {
-      border-left: 2px solid black;
     }
 
   #container2 {
@@ -426,7 +451,7 @@ body::after{
     }
     
 @media screen and (min-width: 768px) {
-  body::after{
+  body:after{
     background: url('../img/backgroundDesktop.jpg');
     background-size: cover;
   }
@@ -535,11 +560,19 @@ body::after{
     max-width: 500px;
   }
     .player {
-      width: 35px;
-      height: 35px;
+      width: 38px;
+      height: 38px;
+      margin-top: 1px;
+      margin-bottom: 1px;
     }
-    #box {
-      height: 215px;
+    #box {    
+      height: 239px;
+    }
+    #box:after{
+      border-bottom: 239px solid rgba(0, 0, 255, 0.37);
+    }
+    #box:before{
+      border-bottom: 239px solid rgba(0, 0, 255, 0.37);
     }
       .line {
         width: 40px;
@@ -573,6 +606,15 @@ body::after{
   #main{
     height: 95%;
   }
+    #box {    
+      height: 240px;
+    }
+    #box:after{
+      border-bottom: 240px solid rgba(0, 0, 255, 0.37);
+    }
+    #box:before{
+      border-bottom: 240px solid rgba(0, 0, 255, 0.37);
+    }
     #container2 {
       margin-top: 4rem;
     }
