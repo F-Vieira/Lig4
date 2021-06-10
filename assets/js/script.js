@@ -349,6 +349,13 @@ const reset = () => {
   audio.play();
   audio.volume = 0.1;
   player.id = playerAux;
+
+  if (playerAux === 'Vermelho'){
+    placar.innerHTML = 'Spider-Man';
+  } else {
+    placar.innerHTML = 'Venom';
+  }
+  
   condInicio = true;
   condClonar = true;
   jogadas = 0;
