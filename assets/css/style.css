@@ -65,7 +65,7 @@ body::after{
       font-weight: normal;
       font-size:30px;
       width: 280px;
-      height: 120px;
+      height: 170px;
       margin: 0 auto;
       padding-top: 45px;
       border-radius: 40px;
@@ -453,7 +453,7 @@ body::after{
     }
 
   .selectScreen{
-    background:black url("../img/selectGalaxy.png");
+    background: black url("../img/selectGalaxy.png");
     background-size: cover;
   }
 
