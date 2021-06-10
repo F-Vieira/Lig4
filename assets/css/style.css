@@ -249,7 +249,7 @@ body::after{
   .win_animate{
     height: 200px;
     margin: 30% 0 20%;
-
+    
     background-repeat: no-repeat;
     background-size: 100% 80%;
     background-position: center;
