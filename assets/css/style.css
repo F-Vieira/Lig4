@@ -336,6 +336,80 @@ body::after{
       }
     } 
 
+    .selectScreen{
+      position: absolute;
+      top:0;
+      bottom:0;
+      right: 0;
+      left:0;
+      color: white;
+      background:black url("../img/select.png");
+      background-repeat: no-repeat;
+      background-size: cover;
+      z-index: 1;
+    }
+
+    .selectScreen__title{
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      padding: 40px;
+      margin-top: 50px;
+      text-shadow: 10px;
+      font-family: 'Comix Loud', sans-serif;
+      font-size: 15px;
+    }
+
+    .selectScreen__container{
+      display: flex;
+      justify-content: space-evenly;
+      text-align: center;
+      background:red ;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.692);
+      transition: background 0.05s linear;
+      transition: all .05s linear;
+    }
+
+    .selectScreen__character{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-left: 0px;
+      font-family: 'Comix Loud', sans-serif;
+      font-size: 7px;
+      background:blue ;
+      margin-right: 13px;
+      margin-left: 13px;
+      width: 150px;
+      min-width: 150px;
+      border-radius: 10px;
+      box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.692);
+      transition: background 0.05s linear;
+      transition: all .05s linear;
+  
+    }
+
+    .selectScreen__character:hover{
+      background: gray;
+    }
+
+    .selectScreen__character:active{
+      background: darkred;
+    }
+    
+
+    .selectScreen__spider{
+      display: flex;
+      width: 120px;
+   
+    }
+    
+    .selectScreen__venom{
+      width: 140px;
+    }
+
 @media screen and (min-width: 768px) {
   body::after{
     content: "";
@@ -443,5 +517,81 @@ body::after{
     }
   } 
   
+  .selectScreen{
+    position: absolute;
+    top:0;
+    bottom:0;
+    right: 0;
+    left:0;
+    color: white;
+    background:black url("../img/selectGalaxy.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 1;
+  }
+
+  .selectScreen__title{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding: 40px;
+    margin-top: 50px;
+    text-shadow: 2px 5px 2px black;
+    font-family: 'Comix Loud', sans-serif;
+    font-size: 25px;
+  }
+
+  .selectScreen__container{
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+    margin: 0 auto;
+    background:red ;
+    width: 550px;
+    padding: 60px;
+    border-radius: 20px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.692);
+    transition: background 0.05s linear;
+    transition: all .05s linear;
+  }
+
+  .selectScreen__character{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 0px;
+    font-family: 'Comix Loud', sans-serif;
+    font-size: 7px;
+    text-shadow: 2px 3px 2px black;
+    background:blue ;
+    margin-right: 25px;
+    margin-left: 25px;
+    width: 160px;
+    min-width: 160px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.692);
+    transition: background 0.05s linear;
+    transition: all .05s linear;
+
+  }
+
+  .selectScreen__character:hover{
+    background: gray;
+  }
+
+  .selectScreen__character:active{
+    background: darkred;
+  }
+  
+
+  .selectScreen__spider{
+    display: flex;
+    width: 120px;
+ 
+  }
+  
+  .selectScreen__venom{
+    width: 140px;
+  }
   
 }
