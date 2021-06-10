@@ -151,7 +151,10 @@ const game = () => {
         }
 
         jogadas++;
-        
+
+        stop();
+        start();
+
         if (
           checkWinHorizontal(arr) ||
           checkWinVertical(arr) ||
@@ -162,10 +165,6 @@ const game = () => {
           win();
           stop();
 
-        } else {
-  
-          stop();
-          start();
         }
         
         /* verifica se ouve empate */
@@ -176,8 +175,7 @@ const game = () => {
       } else {
         placar.innerText = 'Mudar de coluna';
       }
-      stop();
-      start();
+      
     });
   }
 }
@@ -314,7 +312,10 @@ function time() {
     clearInterval(lapse);
     placar.innerHTML = "Acabou o tempo";
     condInicio = false;
-    reset();
+    startScreen.classList.remove("hidden");
+    selectScreen.classList.remove('hidden');
+    audio.pause();
+    audio.currentTime = 0;
   }
   timer.innerHTML = "Timer:<br>" + sec;
 }
