@@ -77,7 +77,6 @@ body::after{
   display: flex;
   margin:0 auto;
   color: white;
-  background-color: rgba(26, 26, 78, 0.274);
   justify-content: center;
   width: 150px;
   height: 40px;
@@ -85,6 +84,18 @@ body::after{
   font-size: 20px;
   border-radius: 30px;
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.692);
+  animation: flash 1s infinite;
+}
+@keyframes flash {
+  0%{
+    background-color: rgba(26, 26, 78, 0.904);
+  }
+  50%{
+    background-color: rgba(78, 26, 26, 0.904);
+  }
+  100%{
+    background-color: rgba(26, 26, 78, 0.904);
+  }
 }
 
 .startScreen__button:hover{
@@ -463,10 +474,6 @@ body::after{
     background-image: url("../img/galaxy2.jpg");
   }
 
-  .startScreen__button{
-    background-color: rgba(26, 26, 78, 0.904);
-  }
-  
   .developer{
     top: -0.3rem;
   }
