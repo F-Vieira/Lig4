@@ -273,7 +273,7 @@ body::after{
   }
 
   #draw_animate{
-    height: 200px;
+    height: 235px;
     background-image: url("../img/empate.gif");
     background-repeat: no-repeat;
     background-size: contain;
@@ -547,18 +547,20 @@ body::after{
     animation: go-up 2s;
   }
 
+    .win_animate{
+      margin: 210px 0 70px;
+    }
     #spiderman_animate{
-      background-size: 35%;
-      margin: 23% 0 5%;
+      background-size: 40%;
       animation: growth 8s;
     }
+    
     #venom_animate{
       background-size: 35%;
-      margin: 23% 0 5%;
       animation: growth 8s;
     }
     #draw_animate{
-      margin: 23% 0 5%;
+      margin: 210px 0 70px;
       animation: growth 8s;
     }
 
@@ -618,15 +620,13 @@ body::after{
     align-items: center;
   }
     #spiderman_animate{
-      margin: 13% 0 10%;
       background-size: 32%;
     }
     #venom_animate{
-      background-size: 20%;
-      margin: 13% 0 10%;
+      background-size: contain;
     }
     #draw_animate{
-      margin: 15% 0 7%;
+      background-size: 16%;
     }
 
   #main{
@@ -650,9 +650,8 @@ body::after{
   #spiderman_animate{
     background-size: 30%;
   }
-  #venom_animate{
-    background-size: 20%;
-    margin: 25% 0 10%;
+  #draw_animate{
+    background-size: 12%;
   }
   #main{
     height: 75%;
