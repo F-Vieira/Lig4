@@ -1,9 +1,12 @@
+@import url('http://fonts.cdnfonts.com/css/comix-loud');
+
 html, body, main, div, button, h1{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   border: none;
 }
+
 .hidden{
   display: none;
 }
